@@ -5,9 +5,19 @@
  * Project: DAW - CEIoT - Project Structure
  * Brief: Main frontend file (where the logic is)
 =============================================================================*/
-class Main implements EventListenerObject {
+interface DevicesInt{
+    id: string;
+    name: string;
+    description: string;
+    state: string;
+    type: string;
+}
+
+
+class Main implements EventListenerObject, GETResponseListener, POSTResponseListener {
   
     myf = new MyFramework;
+    view: ViewMainPage;
     counter: number =0;
     main():void{
         console.log("Metodo main")
@@ -22,13 +32,14 @@ class Main implements EventListenerObject {
         this.mostrarUsers(usuarios);
 
         this.myf = new MyFramework();
-        
+        this.view = new ViewMainPage(this.myf);
         //myf.configClick("boton", ()=> (this.evento))
         //myf.configClick("boton", this.evento)
 
         let b: HTMLElement = this.myf.getElementById("boton")
         b.addEventListener("click", this)
-        this.myf.configClick ("click", "boton", this);
+        //this.myf.configClick ("click", "boton", this);
+       // this.myf.configEventLister ("click", "boton", this);
         //b.textContent = "Hola mundo!!!"; 
        // b.addEventListener("click",this.evento)
 
@@ -46,21 +57,46 @@ class Main implements EventListenerObject {
     }
 
     handleEvent(evt: Event): void {
-        console.log("Se hizo click");
-        console.log(this)  
+        console.log(`Se hizo "${evt.type}"`);
+
         let b:HTMLElement = this.myf.getElementByEvent(evt);
         console.log(b);
-        this.counter++
-        b.textContent = `click ${this.counter}`
+
+        if(b.id == "boton"){
+            this.counter++; 
+            b.textContent = `click ${this.counter}`;
+        }
+        else{
+            let state:boolean = this.view.getSwicthStateById(b.id)
+            let data = {"id":`${b.id}`, "state":state };
+            this.myf.requestPOST("Devices.php",data, this);
+        }
+        
+        
         //throw new Error("Method not implemented."); 
     }  
     
+    handlePOSTResponse(status:number, response:string):void{
+        console.log(status);
+        console.log(response);
+        //throw new Error("Method not implemented.");
+    }
+
 
     handleGETResponse(status:number, response:string):void{
-        console.log ("Llego la respuesta del request");
-        }
-    
+        console.log ("Respuesta del servidor " + response);
+        
+        let data: DevicesInt[] = JSON.parse(response);
+        console.log(data)
+        this.view.showDevices(data);
 
+        for (let d of data){
+           let  b:HTMLElement= this.myf.getElementById(`dev_${d.id}`)
+            b.addEventListener("click", this);
+        }
+
+        }       
+        
 }
 
 
@@ -84,7 +120,7 @@ function greeter(person) {
  
  //document.body.innerHTML = greeter(user);
 
- console.log("Hola mundo");
+// console.log("Hola mundo");
 
 
 //=======[ End of file ]=======================================================

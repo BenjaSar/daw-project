@@ -1,1 +1,32 @@
-Hola mundo
+[ 
+    {
+"id":"1",
+"name":"Lampara 1",
+"description":"Luz living",
+"state":"0",
+"type":"0"
+},
+{
+"id":"2",
+"name":"Lampara 2",
+"description":"Luz living",
+"state":"0",
+"type":"0"
+},
+{
+"id":"3",
+"name":"Lampara 3",
+"description":"Luz living",
+"state":"0",
+"type":"0"
+},
+
+{
+"id":"4",
+"name":"Cortina",
+"description":"Cortina",
+"state":"0",
+"type":"1"
+}
+
+]
