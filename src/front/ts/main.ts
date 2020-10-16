@@ -43,7 +43,7 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
         //b.textContent = "Hola mundo!!!"; 
        // b.addEventListener("click",this.evento)
 
-       this.myf.requestGET("Devices.txt", this);
+       this.myf.requestGET("http://localhost:8000/dispositivos", this);
     }
 
     mostrarUsers(users:Array<User>):void{

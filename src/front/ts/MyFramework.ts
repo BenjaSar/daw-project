@@ -31,15 +31,15 @@ class MyFramework{
   };
         xhr.open("POST", url);
         // envio JSON en body de request (Usar con NODEJS)
-        //xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        //xhr.send(JSON.stringify(data));
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.send(JSON.stringify(data));
         //______________________________
         // envio Formdata en body de request (Usar con Apache,PythonWS,etc.)
-        let formData:FormData = new FormData();
-        for(let key in data) {
-            formData.append(key, data[key]);
-        }
-        xhr.send(formData)
+        //let formData:FormData = new FormData();
+        //for(let key in data) {
+        //    formData.append(key, data[key]);
+        //}
+        //xhr.send(formData)
         //______________________________
        }
 
