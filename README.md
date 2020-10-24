@@ -1,12 +1,10 @@
 ![header](doc/header.png)
 
-# DAW Project Template
+# DAW Project
 
 Autor: Fabian S. - 2020
 
 Este Readme está basado en el Template project for Web Applications Development.
-
-```To read all project documentation, please go to its wiki in [this link](https://github.com/ce-iot/daw-project-template/wiki).
 
 # Tabla de contenidos
     * Introducción
@@ -20,15 +18,14 @@ El proyecto presentado el cual se denonnima "Smart Home" y fue desarrollado empl
 Respecto al desarrollo, en la página se pueden agregar nuevos dispositivos, modificar su nombre e indicar su estado.
 
 # Correr la aplicación
-Posterior al pull del repo, la aplicación se puede ejecutar al correr el siguiente comando en la terminal:
+Posterior al pull del repo, la aplicación se puede ejecutar al correr el siguiente comando en la terminal de Visual Studio Code:
 ```sh
 docker-compose up
 ```
-
 Para confirmar que la API ha sido levantado de manera correcta, verificar en la terminal la siguiente leyenda:
 ```javascript
-*node-backend    | NodeJS API running correctly
-node-backend    | Connected to DB under thread ID: id*
+node-backend    | NodeJS API running correctly
+node-backend    | Connected to DB under thread ID: id
 ```
 ## Creditos
 Este trabajo final está basado en el template desarrollado por:
@@ -42,10 +39,11 @@ Para contribuir realizar un pull request con las sugerencias.
 ## Licencia
 GPL
 
+```To read all project documentation, please go to its wiki in [this link](https://github.com/ce-iot/daw-project-template/wiki).
+```
 
-## Licence
 
-```![footer](doc/footer.png)
+![footer](doc/footerv2.png)
 
 
 
