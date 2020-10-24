@@ -69,7 +69,7 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
         else{
             let state:boolean = this.view.getSwicthStateById(b.id)
             let data = {"id":`${b.id}`, "state":state };
-            this.myf.requestPOST("Devices.php",data, this);
+            this.myf.requestPOST("http://localhost:8000/dispositivos",data, this);
         }
         
         

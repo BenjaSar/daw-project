@@ -30,9 +30,42 @@
     </nav>
     <!-- Page Body -->
     <div class="container">
-        <a id="boton-prueba"></a>
-        <h4>Boton de prueba</h4>
-        <a id="boton" class="waves-effect waves-light btn">button</a>
+        <div class="col s12 m6">
+            <ul class="collapsible popout" data-collapsible="accordion">
+                <li>
+                    <div class="collapsible-header center">
+                        <i class="material-icons">add_circle</i>NUEVO DISPOSITIVO</div>
+                    <div class="collapsible-body">
+                        <div class="row">
+                            <form class="col s12">
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <input placeholder="Placeholder" id="nDispositivo" type="text" class="validate">
+                                        <label for="nDispositivo">Nombre dispositivo</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <input id="eDispositivo" type="text" class="validate">
+                                        <label for="eDispositivo">Estado dispositivo</label>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="container">
+                            <a id="boton-prueba"></a>
+                            <a id="boton" class="waves-effect waves-light btn">AGREGAR</a>
+                        </div>
+
+                </li>
+
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons">delete</i>ELIMINAR DISPOSITIVO</div>
+                    <div class="collapsible-body">
+                        <p>This is second section.</p>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
     </div>
     <br />
     <div class="container">

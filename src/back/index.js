@@ -38,7 +38,7 @@ app.get('/dispositivos/', function(req, res, next) {
     //res.json(datos)
 });
 
-//dispositivos/10
+//dispositivos/i(con i = numero de dispositivo)
 app.get('/dispositivos/:id', function(req, res, next) {
     //Funciones de java script => map reduce filter 
     //let datosFiltrados = datos.filter(itemDeLaLista=>{
@@ -57,7 +57,7 @@ app.get('/dispositivos/:id', function(req, res, next) {
  //Espero recibir algo del estilo (body) {id:1, state:1}
  //devuelvo el dato modificado
  app.post('/dispositivos', function(req, res){
-    conexionMysql.query('Update Devices set sate=? where id=?',[req.body.id],function(err,respuesta){
+    conexionMysql.query('Update Devices set state=? where id=?',[req.body.state,req.body.id],function(err,respuesta){
         if(err){
             res.send(err).status(400);
             return;
@@ -65,7 +65,6 @@ app.get('/dispositivos/:id', function(req, res, next) {
         res.send("Se actualizó correctamente: " + JSON.stringify(respuesta).status(200))
     })
  });
-
 
 
 app.listen(PORT, function(req, res) {
