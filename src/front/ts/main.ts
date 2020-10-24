@@ -33,11 +33,21 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
 
         this.myf = new MyFramework();
         this.view = new ViewMainPage(this.myf);
+        let elem = document.querySelectorAll('.collapsible');
+        let instance = M.Collapsible.init(elem, {
+            accordion: false
+          });
         //myf.configClick("boton", ()=> (this.evento))
         //myf.configClick("boton", this.evento)
 
-        let b: HTMLElement = this.myf.getElementById("boton")
+        let b: HTMLElement = this.myf.getElementById("aboton")
         b.addEventListener("click", this)
+
+        let eb: HTMLElement = this.myf.getElementById("eboton")
+        eb.addEventListener("click", this)
+
+
+        
         //this.myf.configClick ("click", "boton", this);
        // this.myf.configEventLister ("click", "boton", this);
         //b.textContent = "Hola mundo!!!"; 
@@ -45,6 +55,7 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
 
        this.myf.requestGET("http://localhost:8000/dispositivos", this);
     }
+
 
     mostrarUsers(users:Array<User>):void{
        // for (let i in users){
@@ -62,7 +73,7 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
         let b:HTMLElement = this.myf.getElementByEvent(evt);
         console.log(b);
 
-        if(b.id == "boton"){
+        if(b.id == "aboton"){
             this.counter++; 
             b.textContent = `click ${this.counter}`;
         }
