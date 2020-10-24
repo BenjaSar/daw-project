@@ -7,13 +7,13 @@ Autor: Fabian S. - 2020
 Este Readme está basado en el Template project for Web Applications Development.
 
 # Tabla de contenidos
-    * Introducción
-    * Correr la aplicación
-    * Créditos
-    * Contribuir
+* Introducción
+* Correr la aplicación
+* Créditos
+* Contribuir
 
 # **Introduccion**
-El proyecto presentado el cual se denonnima "Smart Home" y fue desarrollado empleando los conocimientos adquiridos en la materia Desarrollo Web de Aplicaciones (DAW) :blush:. Consiste de un frontend empleando el framework Materialize y el lenguaje de programación typescript. Del lado de backend se empleó la herramienta Nodejs. 
+El proyecto presentado para esta material,  el cual se denomina "Smart Home",fue desarrollado empleando los conocimientos adquiridos en la materia Desarrollo Web de Aplicaciones (DAW) :blush:. Consiste de un frontend y un backend. Para el frontende se empleó el framework Materialize y el lenguaje de programación typescript. Del lado de backend se empleó la herramienta Nodejs. 
 
 Respecto al desarrollo, en la página se pueden agregar nuevos dispositivos, modificar su nombre e indicar su estado.
 
