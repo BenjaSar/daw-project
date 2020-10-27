@@ -39,11 +39,13 @@ class ViewMainPage{
         } 
     }
 
-getSwicthStateById(id:string):boolean{
+
+
+    getSwicthStateById(id:string):boolean{
 
     let e:HTMLElement = this.myf.getElementById(id)
     let i:HTMLInputElement = <HTMLInputElement>e
     return i.checked;
+    }
 }
 
-}

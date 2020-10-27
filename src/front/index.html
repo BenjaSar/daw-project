@@ -40,17 +40,31 @@
                             <form class="col s12">
                                 <div class="row">
                                     <div class="input-field col s6">
+                                        <i class="material-icons prefix">mode_edit</i>
                                         <input placeholder="Placeholder" id="nDispositivo" type="text" class="validate">
-                                        <label for="nDispositivo">Nombre dispositivo</label>
+                                        <label class="active" for="nDispositivo">Nombre dispositivo</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input id="eDispositivo" type="text" class="validate">
-                                        <label for="eDispositivo">Estado dispositivo</label>
+                                        <input id="eDispositivo" type="number" class="validate">
+                                        <label class="active" for="eDispositivo">Estado dispositivo</label>
                                     </div>
+                                    <form action="#">
+                                        <p>
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Lampara</span>
+                                            </label>
+                                        </p>
+                                        <p>
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Persiana</span>
+                                            </label>
+                                        </p>
                                 </div>
                         </div>
                         <div class="container">
-                            <a id="boton-agregar"></a>
+                            <a id="aboton"></a>
                             <a id="aboton" class="waves-effect waves-light btn">AGREGAR</a>
                         </div>
 
@@ -64,13 +78,14 @@
                             <form class="col s12">
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input placeholder="Placeholder" id="nDispositivo" type="text" class="validate">
-                                        <label for="nDispositivo">Nombre dispositivo</label>
+                                        <i class="material-icons prefix">mode_edit</i>
+                                        <input placeholder="Placeholder" id="dDispositivo" type="text" class="validate">
+                                        <label for="dDispositivo">Nombre dispositivo</label>
                                     </div>
                                 </div>
                         </div>
                         <div class="container">
-                            <a id="boton-eliminar"></a>
+                            <a id="eboton"></a>
                             <a id="eboton" class="waves-effect waves-light btn">ELIMINAR</a>
                         </div>
 

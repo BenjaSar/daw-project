@@ -57,7 +57,8 @@ app.get('/dispositivos/:id', function(req, res, next) {
  //Espero recibir algo del estilo (body) {id:1, state:1}
  //devuelvo el dato modificado
  app.post('/dispositivos', function(req, res){
-    conexionMysql.query('Update Devices set state=? where id=?',[req.body.state,req.body.id],function(err,respuesta){
+     console.log(req.body)
+    conexionMysql.query('Insert into Devices(name, state) VALUES(?, ?)',[req.body.name,req.body.state],function(err,respuesta){
         if(err){
             res.send(err).status(400);
             return;
@@ -66,6 +67,22 @@ app.get('/dispositivos/:id', function(req, res, next) {
     })
  });
 
+
+
+ app.put('/dispositivos', function(req, res){
+    console.log(req.body)
+    conexionMysql.query('Update Devices set state=?, where name=?' ,[req.body.state,req.body.name],function(err,respuesta){
+        if(err){
+            res.send(err).status(400);
+            return;
+        }
+        res.send("Se actualizó correctamente: " + JSON.stringify(respuesta).status(200))
+    })
+ }); 
+
+
+
+ 
 
 app.listen(PORT, function(req, res) {
     console.log("NodeJS API running correctly");
