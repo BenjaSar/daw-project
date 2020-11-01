@@ -9,6 +9,7 @@ Este Readme está basado en el Template project for Web Applications Development
 # Tabla de contenidos
 ---
 * Introducción
+* Single Page Application
 * Correr la aplicación
 * Créditos
 * Contribuir
@@ -18,6 +19,12 @@ Este Readme está basado en el Template project for Web Applications Development
 El proyecto presentado para esta materia,  el cual consiste en una _Simple Page Application (SPA)_ y se denomina "Smart Home", fue desarrollado empleando los conocimientos adquiridos en la materia Desarrollo Web de Aplicaciones (DAW) :blush:. Consiste de un frontend y un backend. Para el frontende se empleó el framework Materialize y el lenguaje de programación typescript. Del lado de backend se empleó la herramienta Nodejs. Adicionalmente, las modificaciones de estado de los dispositivos serán impactados en una base de datos del tipo relacional.
 
 Respecto al desarrollo, en la página se pueden agregar nuevos dispositivos, modificar su nombre e indicar su estado.
+
+# Single Page Application (SPA)
+---
+En una single page application todas las pantallas se encuentran en una misma página. Dentro de sus sus características principales podemos mencionar:
+* Recarga y muestra contenido en acciones propias de la navegación.
+* Evita realizar request al servidor para cargar más recursos HTML.
 
 # Correr la aplicación
 ---
@@ -45,6 +52,8 @@ Este trabajo final está basado en el template desarrollado por:
 * Santiago Germino
 * Brian Ducca 
 
+La definición de Single Page Application (SPA) fue tomada de las diapositivas de la clase Desarrollo de Aplicaciones Multimedia
+
 ## Contribuir
 ---
 Para contribuir realizar un pull request con las sugerencias.
@@ -56,8 +65,6 @@ GPL
 ```To read all project documentation, please go to its wiki in [this link](https://github.com/ce-iot/daw-project-template/wiki).
 ```
 
-
-![footerv2](/daw-projectfooterv2.png)
 
 
 
