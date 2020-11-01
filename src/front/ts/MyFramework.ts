@@ -29,8 +29,6 @@ class MyFramework{
         return <HTMLElement>evt.target
     }
 
-    
-
     requestGET(url:string, listener: GETResponseListener):void{
 
         let xhr: XMLHttpRequest;

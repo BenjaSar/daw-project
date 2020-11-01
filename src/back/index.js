@@ -80,9 +80,17 @@ app.get('/dispositivos/:id', function(req, res, next) {
     })
  }); 
 
+ app.delete('/dispositivos', function(req, res){
+    console.log(req.body)
+    conexionMysql.query('Delete from Devices where name=?' ,[req.body.name],function(err,respuesta){
+        if(err){
+            res.send(err).status(400);
+            return;
+        }
+        res.send("Se eliminó el dispositivo de manera correcta: " + JSON.stringify(respuesta).status(200))
+    })
+ }); 
 
-
- 
 
 app.listen(PORT, function(req, res) {
     console.log("NodeJS API running correctly");
