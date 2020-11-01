@@ -85,6 +85,7 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
         let db: HTMLElement = this.myf.getElementByEvent(evt);
         console.log(db);
 
+
         if (b.id == "aboton") {
             //inputs
             //nDevice = nombre del dispositivo a agregar
@@ -104,9 +105,9 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
                 tdevice = 1;
             }
 
-            let data = {"id": `${b.id}` ,"name": nDevice, "state": eDevice, "tipo":tdevice };
+            let data = {"name": nDevice, "state": eDevice, "tipo":tdevice };
 
-           if (b.textContent === "AGREGAR"){
+           if (b.textContent == "AGREGAR"){
                 this.myf.requestPOST("http://localhost:8000/dispositivos", data, this);
             }
 
@@ -130,6 +131,11 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
             console.log("El elemento ha sido eliminado");
 
         //throw new Error("Method not implemented."); 
+        }
+        else{
+
+
+
         }
             
     }

@@ -24,7 +24,7 @@ var conexionMysql = require('./mysql-connector');
 
 //=======[ Main module code ]==================================================
 
-app.get('/dispositivos/', function(req, res, next) {
+app.get('/dispositivos', function(req, res, next) {
     conexionMysql.query('Select * from Devices',function(err,respuesta){
         if(err){
             res.send(err).status(400);
@@ -58,20 +58,19 @@ app.get('/dispositivos/:id', function(req, res, next) {
  //devuelvo el dato modificado
  app.post('/dispositivos', function(req, res){
      console.log(req.body)
-    conexionMysql.query('Insert into Devices(name, state) VALUES(?, ?)',[req.body.name,req.body.state],function(err,respuesta){
+    conexionMysql.query('Insert into Devices(name, state, type) VALUES(?, ?, ?)',[req.body.name,req.body.state, req.body.type],function(err,respuesta){
         if(err){
             res.send(err).status(400);
             return;
         }
-        res.send("Se actualizó correctamente: " + JSON.stringify(respuesta).status(200))
+        res.send("Se agregó dispotivio de manera correcta: " + JSON.stringify(respuesta).status(200))
     })
  });
 
 
-
- app.put('/dispositivos', function(req, res){
+ app.put('/dispositivos/:id?', function(req, res){
     console.log(req.body)
-    conexionMysql.query('Update Devices set state=?, where name=?' ,[req.body.state,req.body.name],function(err,respuesta){
+    conexionMysql.query('Update Devices set state=?, name=? where id=?' ,[req.body.state,req.body.name, req.params.id],function(err,respuesta){
         if(err){
             res.send(err).status(400);
             return;
