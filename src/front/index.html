@@ -41,11 +41,11 @@
                                 <div class="row">
                                     <div class="input-field col s6">
                                         <i class="material-icons prefix">mode_edit</i>
-                                        <input placeholder="Placeholder" id="nDispositivo" type="text" class="validate">
+                                        <input placeholder="nDevice" id="nDispositivo" type="text" class="validate">
                                         <label class="active" for="nDispositivo">Nombre dispositivo</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input id="eDispositivo" type="number" class="validate">
+                                        <input placeholder = "sDevice" id="sDispositivo" type="number" class="validate">
                                         <label class="active" for="eDispositivo">Estado dispositivo</label>
                                     </div>
                                     <form action="#">
@@ -64,8 +64,14 @@
                                 </div>
                         </div>
                         <div class="container">
-                            <a id="aboton"></a>
-                            <a id="aboton" class="waves-effect waves-light btn">AGREGAR</a>
+                            <a id="boton" class="waves-effect waves-light btn">AGREGAR</a>
+                            <a id="boton"  onclick= "editar()" class="waves-effect waves-light btn">EDITAR</a>
+                            <script>
+                                function editar(){
+                                    document.getElementById(dev.name).contentEditable = true
+                                }
+                            </script>
+
                         </div>
 
                 </li>
@@ -79,15 +85,18 @@
                                 <div class="row">
                                     <div class="input-field col s6">
                                         <i class="material-icons prefix">mode_edit</i>
-                                        <input placeholder="Placeholder" id="dDispositivo" type="text" class="validate">
+                                        <input placeholder="dDevice" id="dDispositivo" type="text" class="validate">
                                         <label for="dDispositivo">Nombre dispositivo</label>
                                     </div>
                                 </div>
                         </div>
                         <div class="container">
-                            <a id="dboton"></a>
                             <a id="dboton" class="waves-effect waves-light btn">ELIMINAR</a>
                         </div>
+                        <div class="container">
+                            <a id="Eboton"></a>
+                        </div>
+                       
 
                 </li>
             </ul>

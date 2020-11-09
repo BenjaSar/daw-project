@@ -23,19 +23,13 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
         
         console.log("Metodo main")
 
-
-        const dDevice = document.querySelector('dDispositivo') as HTMLInputElement
-
-
-
         //Se crea el array de usuarios
         let usuarios: Array<User>
         usuarios = new Array<User>();
         usuarios.push(new User(1, "Benjamin", "bsarmiento@yahoo.com"));
         usuarios.push(new User(2, "Maria", "mvillamil@yahoo.com"));
         usuarios.push(new User(3, "Milena", "mviltes@yahoo.com"));
-        const M: any;
-
+    
         this.mostrarUsers(usuarios);
 
         this.myf = new MyFramework();
@@ -50,7 +44,7 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
         //myf.configClick("boton", this.evento)
 
         //Llamada del objeto EvenListener para el boton Agregar y el switch
-        let b: HTMLElement = this.myf.getElementById("aboton")
+        let b: HTMLElement = this.myf.getElementById("boton")
         b.addEventListener("click", this)
 
         //Llamada del objeto EventListener para el boton Eliminar
@@ -65,7 +59,6 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
 
         this.myf.requestGET("http://localhost:8000/dispositivos", this);
     }
-
 
     mostrarUsers(users: Array<User>): void {
         // for (let i in users){
@@ -86,32 +79,51 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
         console.log(db);
 
 
-        if (b.id == "aboton") {
+        if (b.id == "boton") {
             //inputs
             //nDevice = nombre del dispositivo a agregar
             //eDevice = estado del dispositivo
-            const nDevice = document.querySelector('#nDispositivo') as HTMLInputElement;
-            const eDevice = document.querySelector('#eDispositivo') as HTMLInputElement;
+            let name = <HTMLInputElement>this.myf.getElementById("nDispositivo");  
+            let sDevice = <HTMLInputElement>this.myf.getElementById("sDispositivo");    
             let w = <HTMLInputElement>this.myf.getElementById("window");
             let l = <HTMLInputElement>this.myf.getElementById("light");
-            let tdevice: number;
+            let dev_id = <HTMLInputElement>this.myf.getElementById("dev_id");
+
+            let device_type: number;
 
             //Lampara => tipo:0
             if(l.checked){
-                tdevice =0;
+                device_type =0;
             }
             //Persiana => tipo:1
             else{
-                tdevice = 1;
+                device_type = 1;
             }
 
-            let data = {"name": nDevice, "state": eDevice, "tipo":tdevice };
+            
 
            if (b.textContent == "AGREGAR"){
+            
+            var node = document.createElement("LI") // Creo un nodo LI
+            node.appendChild(name);
+            this.myf.getElementById("devicesList").appendChild(node);
+            
+            let data = {"name": name, "state": sDevice , "tipo":device_type };
                 this.myf.requestPOST("http://localhost:8000/dispositivos", data, this);
             }
+            else{
 
-        }
+
+                let name = <HTMLInputElement>this.myf.getElementById("name");
+                let  state = <HTMLInputElement>this.myf.getElementById("state");
+
+                let data = {name:"name", state: "state"}
+                this.myf.requestPUT("http://localhost:8000/dispositivos", data, this);
+    
+            }          
+        } 
+
+
         else {
             let state: boolean = this.view.getSwicthStateById(b.id)
             let data = { "id": `${b.id}`, "state": state };
@@ -122,22 +134,19 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
         //Manejador de eventos del  boton eleminar dispositivo
         //const db = document.querySelector('button')
         if(db.id== "dboton"){
-
-            const nDevice = document.querySelector('#nDispositivo') as HTMLInputElement;
+            let nameDevice = <HTMLInputElement>this.myf.getElementById("nDispositivo");  
+            var node = document.createElement("LI") // Creo un nodo LI
+            node.removeChild(nameDevice);
+            let myList =this.myf.getElementById("devicesList").appendChild(node);
+            
             db.textContent = `click ${this.counter}`;
             
-            let data = { "name": nDevice };
+            let data = { "name": nameDevice };
             this.myf.requestDELETE("http://localhost:8000/dispositivos", data, this);
             console.log("El elemento ha sido eliminado");
 
         //throw new Error("Method not implemented."); 
         }
-        else{
-
-
-
-        }
-            
     }
 
     handleGETResponse(status: number, response: string): void {
