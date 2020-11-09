@@ -100,8 +100,7 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
                 device_type = 1;
             }
 
-            
-
+           //Verificamos que tipo de accion se quiere hacer sobre los botones 
            if (b.textContent == "AGREGAR"){
             
             var node = document.createElement("LI") // Creo un nodo LI
@@ -112,8 +111,7 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
                 this.myf.requestPOST("http://localhost:8000/dispositivos", data, this);
             }
             else{
-
-
+                //Boton Editar.
                 let name = <HTMLInputElement>this.myf.getElementById("name");
                 let  state = <HTMLInputElement>this.myf.getElementById("state");
 
@@ -123,11 +121,12 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
             }          
         } 
 
-
+        //Indicacion del estado a través del switch
         else {
             let state: boolean = this.view.getSwicthStateById(b.id)
             let data = { "id": `${b.id}`, "state": state };
             this.myf.requestPOST("http://localhost:8000/dispositivos", data, this);
+            console.log("Se ha enviado el dato con el id " + data.id)
             //this.myf.requestPOST("Devices.php",data, this);
         }
 
@@ -135,10 +134,8 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
         //const db = document.querySelector('button')
         if(db.id== "dboton"){
             let nameDevice = <HTMLInputElement>this.myf.getElementById("nDispositivo");  
-            var node = document.createElement("LI") // Creo un nodo LI
-            node.removeChild(nameDevice);
-            let myList =this.myf.getElementById("devicesList").appendChild(node);
-            
+           
+            nameDevice.nextElementSibling.remove();
             db.textContent = `click ${this.counter}`;
             
             let data = { "name": nameDevice };
