@@ -109,7 +109,7 @@ class MyFramework{
   };
         xhr.open("DELETE", url, true);
         // envio JSON en body de request (Usar con NODEJS)
-        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.setRequestHeader("Accept", "application/json;charset=UTF-8");
         xhr.send(JSON.stringify(data));
      }   
 

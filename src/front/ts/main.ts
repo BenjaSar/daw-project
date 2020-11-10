@@ -52,7 +52,7 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
         db.addEventListener("click", this)
 
         //this.myf.configClick ("click", "boton", this);
-        // this.myf.configEventLister ("click", "boton", this);
+        this.myf.configEventLister ("click", "boton", this);
         //b.textContent = "Hola mundo!!!"; 
         // b.addEventListener("click",this.evento)
 
@@ -81,69 +81,62 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
 
         if (b.id == "boton") {
             //inputs
-            //nDevice = nombre del dispositivo a agregar
-            //eDevice = estado del dispositivo
-            let name = <HTMLInputElement>this.myf.getElementById("nDispositivo");  
-            let sDevice = <HTMLInputElement>this.myf.getElementById("sDispositivo");    
+            //nDispositivo= nombre del dispositivo a agregar
+            //sDispositivo = estado del dispositivo
+            let name = <HTMLInputElement>this.myf.getElementById("nDispositivo");
+            let sDevice  = <HTMLInputElement>this.myf.getElementById("sDispositivo");
+            let descDevice = <HTMLInputElement>this.myf.getElementById("descDispositivo");
+
+           // let sDevice: boolean = this.view.getSwicthStateById(b.id) ;
             let w = <HTMLInputElement>this.myf.getElementById("window");
-            let l = <HTMLInputElement>this.myf.getElementById("light");
+            let l = <HTMLInputElement>this.myf.getElementById("lampara");
             let dev_id = <HTMLInputElement>this.myf.getElementById("dev_id");
-
+    
             let device_type: number;
-
+            
             //Lampara => tipo:0
-            if(l.checked){
+           if(l.checked){
                 device_type =0;
             }
             //Persiana => tipo:1
             else{
                 device_type = 1;
             }
-
            //Verificamos que tipo de accion se quiere hacer sobre los botones 
-           if (b.textContent == "AGREGAR"){
-            
+           if (b.textContent == "AGREGAR"){        
             var node = document.createElement("LI") // Creo un nodo LI
             node.appendChild(name);
             this.myf.getElementById("devicesList").appendChild(node);
+            let n = name.value;
+            let s = sDevice.value;
+            let dD = descDevice.value;
+        
             
-            let data = {"name": name, "state": sDevice , "tipo":device_type };
+            let data = {"name": n, "state": s, "description": dD, "type": device_type};
                 this.myf.requestPOST("http://localhost:8000/dispositivos", data, this);
             }
-            else{
+            /*else{
                 //Boton Editar.
-                let name = <HTMLInputElement>this.myf.getElementById("name");
-                let  state = <HTMLInputElement>this.myf.getElementById("state");
+                let name = <HTMLInputElement>this.myf.getElementById("dev.name");
+                let  state = <HTMLInputElement>this.myf.getElementById("dev.state");
 
                 let data = {name:"name", state: "state"}
                 this.myf.requestPUT("http://localhost:8000/dispositivos", data, this);
     
-            }          
+            } */   
         } 
 
         //Indicacion del estado a través del switch
-        else {
+        else{
             let state: boolean = this.view.getSwicthStateById(b.id)
             let data = { "id": `${b.id}`, "state": state };
-            this.myf.requestPOST("http://localhost:8000/dispositivos", data, this);
+            this.myf.requestPUT("http://localhost:8000/dispositivos", data, this);
             console.log("Se ha enviado el dato con el id " + data.id)
             //this.myf.requestPOST("Devices.php",data, this);
         }
-
         //Manejador de eventos del  boton eleminar dispositivo
         //const db = document.querySelector('button')
-        if(db.id== "dboton"){
-            let nameDevice = <HTMLInputElement>this.myf.getElementById("nDispositivo");  
-           
-            nameDevice.nextElementSibling.remove();
-            db.textContent = `click ${this.counter}`;
-            
-            let data = { "name": nameDevice };
-            this.myf.requestDELETE("http://localhost:8000/dispositivos", data, this);
-            console.log("El elemento ha sido eliminado");
-
-        //throw new Error("Method not implemented."); 
-        }
+     
     }
 
     handleGETResponse(status: number, response: string): void {

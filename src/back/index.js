@@ -58,19 +58,19 @@ app.get('/dispositivos/:id', function(req, res, next) {
  //devuelvo el dato modificado
  app.post('/dispositivos', function(req, res){
      console.log(req.body)
-    conexionMysql.query('Insert into Devices(name, state, type) VALUES(?, ?, ?)',[req.body.name,req.body.state, req.body.type],function(err,respuesta){
+    conexionMysql.query('Insert into Devices(name, state, description, type) VALUES(?, ?, ?, ?)',[req.body.name,req.body.state, req.body.description, req.body.type],function(err,respuesta){
         if(err){
             res.send(err).status(400);
             return;
         }
-        res.send("Se agregó dispotivio de manera correcta: " + JSON.stringify(respuesta).status(200))
+        res.send("Se agregó dispositivo de manera correcta: " + JSON.stringify(respuesta).status(200))
     })
  });
 
 
- app.put('/dispositivos/:id?', function(req, res){
+ app.put('/dispositivos/:id', function(req, res){
     console.log(req.body)
-    conexionMysql.query('Update Devices set state=?, name=? where id=?' ,[req.body.state,req.body.name, req.params.id],function(err,respuesta){
+    conexionMysql.query('Update Devices set state=? where id=?' ,[req.body.state, req.params.id],function(err,respuesta){
         if(err){
             res.send(err).status(400);
             return;

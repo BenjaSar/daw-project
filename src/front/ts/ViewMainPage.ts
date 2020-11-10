@@ -30,7 +30,7 @@ class ViewMainPage{
                                         <div class="switch">
                                             <label>
                                                 Off
-                                                <input id = "dev_${dev.id}" type="checkbox" ${checked}>
+                                                <input id = "" type="checkbox" ${checked}>
                                                 <input type="checkbox" id="dev_${dev.id}" ${(dev.state == "1") ? "checked" : ""}>
                                                 <span class="lever"></span>
                                                 On
