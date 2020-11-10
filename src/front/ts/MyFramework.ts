@@ -107,9 +107,9 @@ class MyFramework{
                listener.handleDELETEResponse(xhr.status,null);
      }
   };
-        xhr.open("DELETE", url, true);
+        xhr.open("DELETE", url);
         // envio JSON en body de request (Usar con NODEJS)
-        xhr.setRequestHeader("Accept", "application/json;charset=UTF-8");
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xhr.send(JSON.stringify(data));
      }   
 

@@ -48,5 +48,12 @@ class ViewMainPage{
     let i:HTMLInputElement = <HTMLInputElement>e
     return i.checked;
     }
+
+    removeElementbyId(id:string):string{
+        let e: HTMLElement = this.myf.getElementById(id);
+        e. parentNode.removeChild(e);
+        let i:HTMLInputElement = <HTMLInputElement>e 
+        return i.value;
+    }
 }
 
