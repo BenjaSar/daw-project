@@ -30,8 +30,7 @@ class ViewMainPage{
                                         <div class="switch">
                                             <label>
                                                 Off
-                                                <input id = "" type="checkbox" ${checked}>
-                                                <input type="checkbox" id="dev_${dev.id}" ${(dev.state == "1") ? "checked" : ""}>
+                                                <input type="checkbox" id="dev_${dev.id}" ${(dev.state == "1")? "checked" : ""}>
                                                 <span class="lever"></span>
                                                 On
                                             </label>
@@ -51,9 +50,17 @@ class ViewMainPage{
 
     removeElementbyId(id:string):string{
         let e: HTMLElement = this.myf.getElementById(id);
-        e. parentNode.removeChild(e);
+        e.parentNode.removeChild(e);
         let i:HTMLInputElement = <HTMLInputElement>e 
         return i.value;
     }
+
+    editElementbyName(name:string){
+        let id:string;
+        let e =document.getElementById(id);
+        e.innerText = name; 
+    }
 }
 
+//<input type="checkbox" id="dev_${dev.id}" ${(dev.state == "1")? "checked" : ""}>
+// <input id = "" type="checkbox" ${checked}>

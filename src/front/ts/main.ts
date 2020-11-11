@@ -42,11 +42,17 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
       
         //Llamada del objeto EvenListener para el boton Agregar y el switch
         let b: HTMLElement = this.myf.getElementById("boton")
-        b.addEventListener("click", this)
+        b.addEventListener("click", this);
+        //Llamada del objeto EvenListener para el boton eliminar
         let db: HTMLElement = this.myf.getElementById("dboton")
-        db.addEventListener("click", this)
+        db.addEventListener("click", this);
 
-        //this.myf.configClick ("click", "boton", this);
+        //Llamada del objeto EventListener para el boton editar
+        let eb: HTMLElement = this.myf.getElementById("editBoton")
+        eb.addEventListener("click", this)
+
+        this.myf.configEventLister ("click", "boton", this);
+
        // this.myf.configEventLister ("click", "boton", this);
         //b.textContent = "Hola mundo!!!"; 
         // b.addEventListener("click",this.evento)
@@ -71,7 +77,10 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
         console.log(b);
         let db: HTMLElement = this.myf.getElementByEvent(evt);
         console.log(db);
+        let eb: HTMLElement = this.myf.getElementByEvent(evt);
+        console.log(eb);
 
+  
         if (b.id == "boton") {
             //inputs
             //nDispositivo= nombre del dispositivo a agregar
@@ -108,30 +117,33 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
             let data = {"name": n, "state": s, "description": dD, "type": device_type};
                 this.myf.requestPOST("http://localhost:8000/dispositivos", data, this);
             }
-           
-             else if(b.textContent == "EDITAR"){
-            //Boton Editar.
-            let name:string = document.getElementById("nDispositivo").contentEditable;
-            let  state = <HTMLInputElement>this.myf.getElementById("sDispositivo");
 
-
-            let data = {name:"name", state: "state"}
-                this.myf.requestPUT("http://localhost:8000/dispositivos", data, this);
-    
-            } 
          }
-
-            //Indicacion del estado a través del switch
-            else{
+     
+        //Indicacion del estado a través del switch
+        else{
             let state: boolean = this.view.getSwicthStateById(b.id)
             let data = { "id": `${b.id}`, "state": state };
-            //this.myf.requestPUT("http://localhost:8000/dispositivos", data, this);
+            this.myf.requestPUT("http://localhost:8000/dispositivos", data, this);
             console.log("Se ha enviado el dato con el id " + data.id)
             //this.myf.requestPOST("Devices.php",data, this);*/
          }
 
+        //Boton Editar.          
+         if(eb.id == "Boton"){
+             
+            let name = this.view.editElementbyName("nDispositivo");
+            let  state = <HTMLInputElement>this.myf.getElementById("sDispositivo");
+            let s = state.value;
+
+            let data = {"id": `${eb.id}`,name:"name", state: "state"}
+            //let data = {name:"name"}
+                //this.myf.requestPUT("http://localhost:8000/dispositivos", data, this);
+    
+            } 
+
           //Boton elimnar
-          if(db.id == "dboton"){
+        if(db.id == "dboton"){
             let eDevice = this.view.removeElementbyId("devname");
             let name = this.myf.getElementById("devname");
             console.log(eDevice);
